@@ -1,0 +1,1 @@
+[{"model": "news.category", "pk": 1, "fields": {"name": "Наука"}}, {"model": "news.category", "pk": 2, "fields": {"name": "Политика"}}, {"model": "news.category", "pk": 3, "fields": {"name": "Спорт"}}, {"model": "news.category", "pk": 4, "fields": {"name": "Культура"}}]

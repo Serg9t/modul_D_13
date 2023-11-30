@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+{{ mixin_prop }}
+    {% for item in articles %}
+    <div class="card mb-3">
+        <div class="card-header">
+            Категория: <a href="{{ item.category.get_absolute_url }}">{{ item.category }}</a>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                <div class="media-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.content|safe|linebreaks|truncatewords:50 }}</p>
+                    <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer text-muted">
+            {{ item.created|date:"Y-m-d H:i:s" }}
+            <br>
+            Автор: {{ item.author }}
+        </div>
+        <div class="card-footer">
+            {% if perms.news.change_post %}
+            <a href="{% url 'update_news' pk=item.id %}">Изменить | </a>
+            {% endif %}
+
+            {% if perms.news.delete_post %}
+            <a href="{% url 'delete_news' item.id %}">Удалить</a>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block paginator %}
+{% include 'inc/pagination.html' %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="card mb-3">
+    <div class="card-header">
+        Категория: <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content|safe|linebreaks }}</p>
+    </div>
+    <div class="class-footer text-muted">
+        {{ post.created|date:"Y-m-d H:i:s" }}
+        <br>
+        Автор: {{ post.author }}
+    </div>
+</div>
+{% endblock %}

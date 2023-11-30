@@ -1,0 +1,27 @@
+2023-11-30 13:21:07,405 - [ERROR] - Internal Server Error: /category/45/ - E:\NewsProject\venv\Lib\site-packages\django\utils\log.py - (<class 'news.models.Category.DoesNotExist'>, DoesNotExist('Category matching query does not exist.'), <traceback object at 0x00000238F6649100>) 
+Traceback (most recent call last):
+  File "E:\NewsProject\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\NewsProject\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\NewsProject\venv\Lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\NewsProject\venv\Lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\NewsProject\venv\Lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\NewsProject\newsportal\news\views.py", line 38, in get_context_data
+    context['title'] = Category.objects.get(pk=self.kwargs['category_id'])
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\NewsProject\venv\Lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\NewsProject\venv\Lib\site-packages\django\db\models\query.py", line 650, in get
+    raise self.model.DoesNotExist(
+news.models.Category.DoesNotExist: Category matching query does not exist.
+2023-11-30 13:21:07,427 - [ERROR] - "GET /category/45/ HTTP/1.1" 500 95539 - E:\NewsProject\venv\Lib\site-packages\django\core\servers\basehttp.py - None 
